@@ -225,7 +225,7 @@ def hci_le_set_scan_parameters(sock, scan_type=LE_SCAN_ACTIVE, interval=0x10,
     # setting up scan
 
     # interval and window are uint_16, so we pad them with 0x0
-    cmd_pkt = struct.pack("<BBBBBBB", scan_type, 0x0, interval, 0x0, window,
+    cmd_pkt = struct.pack("<BBBBBBB", scan_type, interval, 0x0, window, 0x0,
                           own_bdaddr_type, filter_type)
     bluez.hci_send_cmd(sock, OGF_LE_CTL, OCF_LE_SET_SCAN_PARAMETERS, cmd_pkt)
     # sent scan parameters command

@@ -334,7 +334,9 @@ if __name__ == "__main__":
         try:
             if debug:
                 print "-- set ble scan parameters"
-            ble.hci_le_set_scan_parameters(sock)
+            # ble.hci_le_set_scan_parameters(sock)
+            ble.hci_le_set_scan_parameters(sock, scan_type=ble.LE_SCAN_PASSIVE,
+                    own_bdaddr_type=ble.LE_PUBLIC_ADDRESS)
             if debug:
                 print "-- set ble scan parameters : success"
         except Exception as e:
